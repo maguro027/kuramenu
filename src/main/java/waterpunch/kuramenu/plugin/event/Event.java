@@ -22,11 +22,15 @@ public class Event implements Listener {
                          if (event.getRawSlot() == 36) ((Player) event.getWhoClicked()).closeInventory();
                          if (event.getRawSlot() == 10) ((Player) event.getWhoClicked()).openInventory(waterpunch.kuramenu.plugin.Menus.getFLY_SPEEDMenu((Player) event.getWhoClicked()));
                          if (event.getRawSlot() == 12) ((Player) event.getWhoClicked()).openInventory(waterpunch.kuramenu.plugin.Menus.getTIMEMenu((Player) event.getWhoClicked()));
-                         if (event.getRawSlot() == 14) ((Player) event.getWhoClicked()).performCommand("bannar");
+                         if (event.getRawSlot() == 14) ((Player) event.getWhoClicked()).performCommand("banner");
                          if (event.getRawSlot() == 16) ((Player) event.getWhoClicked()).performCommand("color");
                          //
                          if (event.getRawSlot() == 28) ((Player) event.getWhoClicked()).performCommand("butil");
                          if (event.getRawSlot() == 30) ((Player) event.getWhoClicked()).performCommand("blocks");
+                         if (event.getRawSlot() == 32) {
+                              ((Player) event.getWhoClicked()).performCommand("give @p minecraft:player_head{SkullOwner:" + ((Player) event.getWhoClicked()).getDisplayName() + "} 1");
+                              ((Player) event.getWhoClicked()).closeInventory();
+                         }
 
                          break;
                     case "KURA_SERVER_FLY_SPEED_MENU":
@@ -46,35 +50,42 @@ public class Event implements Listener {
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
                          if (event.getRawSlot() == 14) {
-                              ((Player) event.getWhoClicked()).performCommand("flyspeed 4");
+                              ((Player) event.getWhoClicked()).performCommand("flyspeed 5");
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
                          if (event.getRawSlot() == 15) {
-                              ((Player) event.getWhoClicked()).performCommand("flyspeed 4");
+                              ((Player) event.getWhoClicked()).performCommand("flyspeed 10");
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
 
                          break;
-                    case "KURA_SERVER_TIME_MENU":
+                    case "KURA_SERVER_PLAYER_TIME_MENU":
                          event.setCancelled(true);
                          if (event.getRawSlot() == 18) ((Player) event.getWhoClicked()).openInventory(waterpunch.kuramenu.plugin.Menus.getTopMenu((Player) event.getWhoClicked()));
+                         if (event.getRawSlot() == 10) {
+                              ((Player) event.getWhoClicked()).performCommand("ptime sunrise");
+                              ((Player) event.getWhoClicked()).closeInventory();
+                         }
                          if (event.getRawSlot() == 11) {
-                              ((Player) event.getWhoClicked()).performCommand("time set day");
+                              ((Player) event.getWhoClicked()).performCommand("ptime day");
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
                          if (event.getRawSlot() == 12) {
-                              ((Player) event.getWhoClicked()).performCommand("time set noon");
+                              ((Player) event.getWhoClicked()).performCommand("ptime noon");
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
                          if (event.getRawSlot() == 14) {
-                              ((Player) event.getWhoClicked()).performCommand("time set night");
+                              ((Player) event.getWhoClicked()).performCommand("ptime sunset");
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
                          if (event.getRawSlot() == 15) {
-                              ((Player) event.getWhoClicked()).performCommand("time set midnight");
+                              ((Player) event.getWhoClicked()).performCommand("ptime night");
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
-
+                         if (event.getRawSlot() == 16) {
+                              ((Player) event.getWhoClicked()).performCommand("ptime midnight");
+                              ((Player) event.getWhoClicked()).closeInventory();
+                         }
                          break;
                }
           }

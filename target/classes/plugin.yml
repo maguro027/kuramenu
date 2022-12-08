@@ -1,5 +1,5 @@
 name: KURA_MENU
-version: 0.0.3
+version: 0.1.0
 api-version: 1.13
 main: waterpunch.kuramenu.plugin.main.Core
 prefix: KURA_MENU
