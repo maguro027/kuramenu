@@ -106,6 +106,30 @@ public class Menus {
           return HEAD;
      }
 
+     static ItemStack getLightUP() {
+          ItemStack LIGHT_UP = new ItemStack(Material.LIGHT);
+          ItemMeta LIGHT_UP_Meta = LIGHT_UP.getItemMeta();
+          LIGHT_UP_Meta.setDisplayName(ChatColor.GOLD + "LIGHT_UP");
+          LIGHT_UP.setItemMeta(LIGHT_UP_Meta);
+          return LIGHT_UP;
+     }
+
+     static ItemStack getLightUP_ON() {
+          ItemStack ON = new ItemStack(Material.JACK_O_LANTERN);
+          ItemMeta ON_Meta = ON.getItemMeta();
+          ON_Meta.setDisplayName(ChatColor.GREEN + "ON");
+          ON.setItemMeta(ON_Meta);
+          return ON;
+     }
+
+     static ItemStack getLightUP_OFF() {
+          ItemStack OFF = new ItemStack(Material.CARVED_PUMPKIN);
+          ItemMeta OFF_Meta = OFF.getItemMeta();
+          OFF_Meta.setDisplayName(ChatColor.GREEN + "OFF");
+          OFF.setItemMeta(OFF_Meta);
+          return OFF;
+     }
+
      static ItemStack getSPEED(int i) {
           ItemStack SPEED = null;
           switch (i) {
@@ -188,6 +212,7 @@ public class Menus {
           KURA_SERVER_TOP_MENU.setItem(28, new ItemStack(getBUTIL()));
           KURA_SERVER_TOP_MENU.setItem(30, new ItemStack(getBLOCKS()));
           KURA_SERVER_TOP_MENU.setItem(32, new ItemStack(getHEAD()));
+          KURA_SERVER_TOP_MENU.setItem(34, new ItemStack(getLightUP()));
           return KURA_SERVER_TOP_MENU;
      }
 
@@ -215,5 +240,15 @@ public class Menus {
           KURA_SERVER_PLAYER_TIME_MENU.setItem(15, new ItemStack(getTIME(5)));
           KURA_SERVER_PLAYER_TIME_MENU.setItem(16, new ItemStack(getTIME(6)));
           return KURA_SERVER_PLAYER_TIME_MENU;
+     }
+
+     public static Inventory getLightMenu(Player player) {
+          Inventory KURA_SERVER_LIGHT_MENU = Bukkit.createInventory(player, 9 * 3, "KURA_SERVER_LIGHT_MENU");
+          set3Border(KURA_SERVER_LIGHT_MENU);
+          KURA_SERVER_LIGHT_MENU.setItem(4, new ItemStack(getLightUP()));
+          KURA_SERVER_LIGHT_MENU.setItem(11, new ItemStack(getLightUP_ON()));
+          KURA_SERVER_LIGHT_MENU.setItem(15, new ItemStack(getLightUP_OFF()));
+
+          return KURA_SERVER_LIGHT_MENU;
      }
 }

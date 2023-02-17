@@ -10,6 +10,8 @@ import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
+import org.bukkit.potion.PotionEffect;
+import org.bukkit.potion.PotionEffectType;
 
 public class Event implements Listener {
 
@@ -40,6 +42,7 @@ public class Event implements Listener {
                               item.setItemMeta(skull);
                               ((Player) event.getWhoClicked()).getInventory().addItem(item);
                          }
+                         if (event.getRawSlot() == 34) ((Player) event.getWhoClicked()).openInventory(waterpunch.kuramenu.plugin.Menus.getLightMenu((Player) event.getWhoClicked()));
 
                          break;
                     case "KURA_SERVER_FLY_SPEED_MENU":
@@ -93,6 +96,16 @@ public class Event implements Listener {
                          }
                          if (event.getRawSlot() == 16) {
                               ((Player) event.getWhoClicked()).performCommand("ptime midnight");
+                              ((Player) event.getWhoClicked()).closeInventory();
+                         }
+                         break;
+                    case "KURA_SERVER_LIGHT_MENU":
+                         if (event.getRawSlot() == 11) {
+                              ((Player) event.getWhoClicked()).addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 600000, 1));
+                              ((Player) event.getWhoClicked()).closeInventory();
+                         }
+                         if (event.getRawSlot() == 15) {
+                              ((Player) event.getWhoClicked()).removePotionEffect(PotionEffectType.GLOWING);
                               ((Player) event.getWhoClicked()).closeInventory();
                          }
                          break;
