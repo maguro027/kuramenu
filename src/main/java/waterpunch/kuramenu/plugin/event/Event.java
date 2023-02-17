@@ -1,10 +1,14 @@
 package waterpunch.kuramenu.plugin.event;
 
+import org.bukkit.Material;
+import org.bukkit.SkullType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryType;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.SkullMeta;
 import org.bukkit.plugin.Plugin;
 
 public class Event implements Listener {
@@ -28,8 +32,13 @@ public class Event implements Listener {
                          if (event.getRawSlot() == 28) ((Player) event.getWhoClicked()).performCommand("butil");
                          if (event.getRawSlot() == 30) ((Player) event.getWhoClicked()).performCommand("blocks");
                          if (event.getRawSlot() == 32) {
-                              ((Player) event.getWhoClicked()).performCommand("give @p minecraft:player_head{SkullOwner:" + ((Player) event.getWhoClicked()).getDisplayName() + "} 1");
                               ((Player) event.getWhoClicked()).closeInventory();
+                              ItemStack item = new ItemStack(Material.PLAYER_HEAD, 1, (short) 3);
+                              SkullMeta skull = (SkullMeta) item.getItemMeta();
+                              skull.setDisplayName(((Player) event.getWhoClicked()).getName());
+                              skull.setOwner(((Player) event.getWhoClicked()).getName());
+                              item.setItemMeta(skull);
+                              ((Player) event.getWhoClicked()).getInventory().addItem(item);
                          }
 
                          break;
